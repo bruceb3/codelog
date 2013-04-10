@@ -12,7 +12,6 @@ function! s:Get_git_info()
 endfunction
 
 function! s:store(filename, string)
-  echom "cat '" . a:string . "' >> '" . a:filename . "'"
   return system("echo '" . a:string . "' >> '" . a:filename . "'")
 endfunction
 
