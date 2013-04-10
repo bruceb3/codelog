@@ -1,3 +1,2 @@
 
-autocmd BufWritePre,BufRead * exec 'silent :! echo "%:p,`date`,`if [ -d $(pwd)/.git ]; then GIT_DIR=$(pwd)/.git git rev-parse --abbrev-ref HEAD; fi`,`if [ -d $(pwd)/.git ]; then GIT_DIR=$(pwd)/.git git log --pretty=format:\"\%h\" -n 1; fi`" >> ~/vim_files.csv &'
-
+Carl's code metrics in vim.
