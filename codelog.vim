@@ -24,11 +24,11 @@ function! s:date()
 endfunction
 
 function! s:Branch_name(git_dir)
-  return s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --abbrev-ref HEAD"))
+  return s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --abbrev-ref HEAD") || 'N/A')
 endfunction
 
 function! s:Commit(git_dir)
-  return s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --short HEAD"))
+  return s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --short HEAD") || 'N/A')
 endfunction
 
 function! s:chomp(string)
@@ -38,4 +38,4 @@ endfunction
 augroup CodeLog
   au!
   au BufWritePre,BufRead * call s:Get_git_info()
-autocmd CodeLog
+augroup END
