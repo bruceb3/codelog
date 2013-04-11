@@ -1,7 +1,5 @@
 
 
-"autocmd BufWritePre,BufRead * exec 'silent :! echo "%:p,`date`,`if [ -d $(pwd)/.git ]; then GIT_DIR=$(pwd)/.git git rev-parse --abbrev-ref HEAD; fi`,`if [ -d $(pwd)/.git ]; then GIT_DIR=$(pwd)/.git git log --pretty=format:\"\%h\" -n 1; fi`" >> ~/vim_files.csv &'
-
 let g:codelog_file = $HOME . '/vim_files.csv'
 
 function! s:Get_git_info()
@@ -24,11 +22,13 @@ function! s:date()
 endfunction
 
 function! s:Branch_name(git_dir)
-  return s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --abbrev-ref HEAD") || 'N/A')
+  let l:branch_name = s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --abbrev-ref HEAD"))
+  return (l:branch_name == '' ? 'N/A' : l:branch_name)
 endfunction
 
 function! s:Commit(git_dir)
-  return s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --short HEAD") || 'N/A')
+  let l:commit = s:chomp(system("GIT_DIR=" . a:git_dir . " git rev-parse --short HEAD"))
+  return (l:commit == '' ? 'N/A' : l:commit)
 endfunction
 
 function! s:chomp(string)
