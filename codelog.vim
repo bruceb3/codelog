@@ -1,7 +1,7 @@
 
 
 let g:codelog_file = $HOME . '/vim_files.csv'
-let g:diff_options = '-p'
+let g:diff_options = '-u'
 
 function! s:Get_git_info()
   let l:git_dir = getcwd().'/.git'
