@@ -1,6 +1,7 @@
 
 
 let g:codelog_file = $HOME . '/vim_files.csv'
+let g:diff_options = '-p'
 
 function! s:Get_git_info()
   let l:git_dir = getcwd().'/.git'
@@ -16,7 +17,7 @@ endfunction
 
 function! s:capture_diff(filename)
   " not interested in the shell return code
-  silent exec ":w !diff -p % - >> " a:filename "; exit 0"
+  silent exec ":w !diff " g:diff_options " % - >> " a:filename "; exit 0"
 endfunction
 
 function! s:fullpath()
