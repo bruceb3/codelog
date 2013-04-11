@@ -16,7 +16,6 @@ function! s:store(filename, string)
 endfunction
 
 function! s:capture_diff(filename)
-  " not interested in the shell return code
   silent exec ":w !diff " g:diff_options " % - >> " a:filename "; exit 0"
 endfunction
 
@@ -45,4 +44,4 @@ endfunction
 augroup CodeLog
   au!
   au BufWritePre,BufRead * call s:Get_git_info()
-augroup END
+augroup end
