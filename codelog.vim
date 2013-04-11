@@ -15,6 +15,8 @@ function! s:store(filename, string)
 endfunction
 
 function! s:capture_diff(filename)
+  " :w !diff % - >> $filename
+  exec ":w !diff % - >> " a:filename
 endfunction
 
 function! s:fullpath()
