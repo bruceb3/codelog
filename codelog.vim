@@ -7,8 +7,8 @@ function! s:Get_git_info()
   let l:git_dir = getcwd().'/.git'
   if isdirectory(l:git_dir)
     call s:store(g:codelog_file, join([s:date(), s:fullpath(), s:Branch_name(l:git_dir), s:Commit(l:git_dir)], ','))
-    call s:capture_diff(g:codelog_file) " for current buffer only
   endif
+  call s:capture_diff(g:codelog_file) " for current buffer only
 endfunction
 
 function! s:store(filename, string)
