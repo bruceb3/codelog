@@ -16,7 +16,9 @@ function! s:store(filename, string)
 endfunction
 
 function! s:capture_diff(filename)
-  silent exec ":w !diff " g:diff_options " % - >> " a:filename "; exit 0"
+  if strlen(expand('%')) > 0
+    silent exec ":w !diff " g:diff_options " % - >> " a:filename "; exit 0"
+  endif
 endfunction
 
 function! s:fullpath()
